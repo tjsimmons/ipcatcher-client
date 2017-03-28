@@ -15,8 +15,11 @@ else
     echo $new_offline > offline_count.txt
 
     if [ $new_offline -gt 5 ]; then
-		touch rebooted.txt
-		echo 0 > offline_count.txt
-        reboot
+	touch down.txt
+	echo 0 > offline_count.txt
+	sync
+        /sbin/reboot
     fi
 fi
+
+exit 0
